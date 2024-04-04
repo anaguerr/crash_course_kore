@@ -1,0 +1,9 @@
+TOKEN "sales_per_day_endpoint_read_0696" READ
+
+NODE sales_per_store
+SQL >
+    %
+    SELECT toStartOfHour(parseDateTimeBestEffort(timestamp)) as hour, store_id, sum(sales) total_sales
+    FROM sales_example
+    where store_id ={{ Int16(store_id, 1) }}
+    group by hour, store_id

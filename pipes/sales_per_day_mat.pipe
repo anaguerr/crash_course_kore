@@ -1,0 +1,9 @@
+TOKEN "sales_per_day_mat_endpoint_read_8553" READ
+
+NODE sales_per_store_mat
+SQL >
+    %
+    SELECT hour, store_id, sumMerge(total_sales) total_sales
+    FROM mat_sales_mv
+    where store_id ={{ Int16(store_id, 1) }}
+    group by hour, store_id

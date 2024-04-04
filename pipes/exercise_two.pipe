@@ -1,0 +1,16 @@
+TOKEN "exercise_two_endpoint_read_8966" READ
+TOKEN "read_token" READ
+
+NODE exercise_two_0
+SQL >
+    %
+    SELECT tpep_pickup_datetime
+    FROM yellow_tripdata
+    where passenger_count ={{ Int16(passenger_count, 2) }}
+
+NODE exercise_two_1
+SQL >
+    SELECT toStartOfHour(tpep_pickup_datetime) as hour, count() as trips
+    FROM exercise_two_0
+    group by hour
+    order by hour asc

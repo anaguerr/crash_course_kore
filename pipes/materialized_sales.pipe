@@ -1,0 +1,11 @@
+NODE mat_sales
+SQL >
+    SELECT
+        toStartOfHour(parseDateTimeBestEffort(timestamp)) AS hour,
+        store_id,
+        sumState(sales) AS total_sales
+    FROM sales_example
+    GROUP BY hour, store_id
+
+TYPE MATERIALIZED
+DATASOURCE mat_sales_mv

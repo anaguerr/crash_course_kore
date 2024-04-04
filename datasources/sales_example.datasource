@@ -1,0 +1,11 @@
+SCHEMA >
+    `browser` String `json:$.browser`,
+    `product_id` Int32 `json:$.product_id`,
+    `promo` Int16 `json:$.promo`,
+    `sales` Int16 `json:$.sales`,
+    `store_id` Int16 `json:$.store_id`,
+    `timestamp` String `json:$.timestamp`,
+    `utm_source` String `json:$.utm_source`
+
+ENGINE MergeTree
+ENGINE_SORTING_KEY browser, store_id, timestamp, utm_source

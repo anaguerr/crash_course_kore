@@ -1,0 +1,12 @@
+NODE exercise_two_0
+SQL >
+    %
+    SELECT toStartOfHour(tpep_pickup_datetime) as hour, passenger_count, count() as trips
+    FROM yellow_tripdata
+    group by hour, passenger_count
+    order by hour asc
+
+NODE exercise_two_1
+SQL >
+    %
+    SELECT hour, trips FROM exercise_two_0 where passenger_count ={{ Int16(passenger_count, 2) }}
