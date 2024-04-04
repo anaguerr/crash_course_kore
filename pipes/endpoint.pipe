@@ -1,0 +1,8 @@
+TOKEN "read_token" READ
+
+NODE exercise_one_0
+SQL >
+    %
+    SELECT count() as trips
+    FROM yellow_tripdata_2018_01
+    where passenger_count ={{ Int16(passenger_count, 2) }}

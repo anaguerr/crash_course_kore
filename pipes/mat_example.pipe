@@ -1,0 +1,5 @@
+NODE mat_example_0
+SQL >
+    SELECT day, countMerge(trips) as trips, avgMerge(distance) as distance
+    FROM materialize_exercise_mv
+    group by day

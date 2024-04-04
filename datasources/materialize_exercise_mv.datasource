@@ -1,0 +1,8 @@
+SCHEMA >
+    `day` DateTime,
+    `trips` AggregateFunction(count),
+    `distance` AggregateFunction(avg, Float32)
+
+ENGINE AggregatingMergeTree
+ENGINE_PARTITION_KEY toYear(day)
+ENGINE_SORTING_KEY day

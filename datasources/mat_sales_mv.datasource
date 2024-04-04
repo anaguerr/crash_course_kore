@@ -1,0 +1,8 @@
+SCHEMA >
+    `hour` DateTime,
+    `store_id` Int16,
+    `total_sales` AggregateFunction(sum, Int16)
+
+ENGINE AggregatingMergeTree
+ENGINE_PARTITION_KEY toYYYYMM(hour)
+ENGINE_SORTING_KEY store_id, hour

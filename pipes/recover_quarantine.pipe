@@ -1,0 +1,15 @@
+NODE copy
+SQL >
+    SELECT
+        coalesce(browser, '') as browser,
+        coalesce(toInt32(product_id), 0) as product_id,
+        coalesce(toInt16(promo), 0) as promo,
+        coalesce(toInt16(sales), 4) as sales,
+        coalesce(toInt16(store_id), 0) as store_id,
+        coalesce(toString(timestamp), '') as timestamp,
+        coalesce(utm_source, '') as utm_source
+    FROM sales_example_quarantine
+
+NODE recover_quarantine_1
+SQL >
+    SELECT * FROM sales_example
